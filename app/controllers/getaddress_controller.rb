@@ -38,6 +38,7 @@ class GetaddressController < ApplicationController
       prop_acct_num = browser.all(:xpath, '/html/body/table[2]/tbody/tr/td/table/tbody/tr[1]/td[1]/table[1]/tbody/tr/td[3]/table/tbody/tr[1]/td[2]/span')[0].text
       home_value = browser.all(:xpath, '/html/body/table[2]/tbody/tr/td/table/tbody/tr[1]/td[1]/table[5]/tbody/tr[3]/td[4]/span')[0].text
 
+      #go to GeoCodes and get Property Address
       search_addr = prop_addr.gsub(" ","+").gsub("-","+")
       api_key = 'AIzaSyDa1BWxkgm1n3tljbV-J_6bo3r7jV1UsD4'
 
@@ -55,6 +56,7 @@ class GetaddressController < ApplicationController
       prop_county = "#{address_components[4]["long_name"]}"
 
 
+      #go back to GeoCodes and get Mailing Address
       search_addr = mail_addr.gsub(" ","+").gsub("-","+")
       api_key = 'AIzaSyDa1BWxkgm1n3tljbV-J_6bo3r7jV1UsD4'
 
@@ -70,7 +72,6 @@ class GetaddressController < ApplicationController
       mail_state = "#{address_components[5]["short_name"]}"
       mail_zip = "#{address_components[7]["long_name"]}"
       mail_county = "#{address_components[4]["long_name"]}"
-
 
       Property.create(owner: name,
                       prop_str_addr: prop_str_addr,
@@ -88,7 +89,7 @@ class GetaddressController < ApplicationController
                       document_num: document_num,
                       prop_acct_num: prop_acct_num,
                       doc_number_lp: doc_number_lp
-      )
+                    )
     end
   end
 end
