@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner: MyString
+  prop_str_addr: MyString
+  prop_city: MyString
+  prop_state: MyString
+  prop_zip: MyString
+  prop_county: MyString
+  mail_str_addr: MyString
+  mail_city: MyString
+  mail_state: MyString
+  mail_zip: MyString
+  mail_county: MyString
+  home_value: MyString
+  prop_acct_num: MyString
+  legal_desc: MyText
+  document_num: MyString
+  record_date: 2016-05-22
+  doc_number_lp: MyString
+
+two:
+  owner: MyString
+  prop_str_addr: MyString
+  prop_city: MyString
+  prop_state: MyString
+  prop_zip: MyString
+  prop_county: MyString
+  mail_str_addr: MyString
+  mail_city: MyString
+  mail_state: MyString
+  mail_zip: MyString
+  mail_county: MyString
+  home_value: MyString
+  prop_acct_num: MyString
+  legal_desc: MyText
+  document_num: MyString
+  record_date: 2016-05-22
+  doc_number_lp: MyString

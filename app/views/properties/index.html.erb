@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Properties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Owner</th>
+      <th>Prop str addr</th>
+      <th>Prop city</th>
+      <th>Prop state</th>
+      <th>Prop zip</th>
+      <th>Prop county</th>
+      <th>Mail str addr</th>
+      <th>Mail city</th>
+      <th>Mail state</th>
+      <th>Mail zip</th>
+      <th>Mail county</th>
+      <th>Home value</th>
+      <th>Prop acct num</th>
+      <th>Legal desc</th>
+      <th>Document num</th>
+      <th>Record date</th>
+      <th>Doc number lp</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @properties.each do |property| %>
+      <tr>
+        <td><%= property.owner %></td>
+        <td><%= property.prop_str_addr %></td>
+        <td><%= property.prop_city %></td>
+        <td><%= property.prop_state %></td>
+        <td><%= property.prop_zip %></td>
+        <td><%= property.prop_county %></td>
+        <td><%= property.mail_str_addr %></td>
+        <td><%= property.mail_city %></td>
+        <td><%= property.mail_state %></td>
+        <td><%= property.mail_zip %></td>
+        <td><%= property.mail_county %></td>
+        <td><%= property.home_value %></td>
+        <td><%= property.prop_acct_num %></td>
+        <td><%= property.legal_desc %></td>
+        <td><%= property.document_num %></td>
+        <td><%= property.record_date %></td>
+        <td><%= property.doc_number_lp %></td>
+        <td><%= link_to 'Show', property %></td>
+        <td><%= link_to 'Edit', edit_property_path(property) %></td>
+        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Property', new_property_path %>
