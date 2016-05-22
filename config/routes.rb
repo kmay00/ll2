@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'getaddress/index'
+
+  get 'getleads/index'
+
   get 'welcome/index'
 
   resources :partials
