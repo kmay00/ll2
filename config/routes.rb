@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'dashboard/index'
+  get 'dashboard/show'
 
   # sessions routes
   resources :sessions, only: [:new, :create, :destroy]
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   # welcome root page
   root 'welcome#index'
   get 'getaddress/index'
-  
+
   # rake action routes
   get 'getleads/index'
   get 'welcome/index'
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

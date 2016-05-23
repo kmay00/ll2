@@ -9,10 +9,12 @@ class GetleadsController < ApplicationController
     data.each do |property|
       document_num = property[0]
       owner = property[1]
+
       # record_date = property[7]
-      # record_date = record_date.to_datetime.strftime('%Q')
+      # record_date = record_date.to_datetime     #.strftime('%Q')
       # p record_date
       # p record_date.class
+
       doc_number_lp = property[10]
 
       Partial.create(document_num: document_num,
