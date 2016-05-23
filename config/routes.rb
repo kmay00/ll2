@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
+  # sessions routes
+  resources :sessions, only: [:new, :create, :destroy]
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  # welcome root page
+  root 'welcome#index'
   get 'getaddress/index'
-
+  
+  # rake action routes
   get 'getleads/index'
-
   get 'welcome/index'
 
+  # scaffolded model resource routes
   resources :partials
   resources :properties
   resources :users
@@ -12,7 +21,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
