@@ -1,0 +1,43 @@
+
+<h1>Dashboard</h1>
+<h3>New Leads - Available for Purchase</h3>
+
+
+
+<!--  THIS IS FOR DEVELOMENT PURPOSES ONLY - WILL ALL BE DELETED WHEN TESTING COMPLETED -->
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+
+<!-- form_tag('name of method', symbolkey: :action) -->
+<%= form_tag('purchase', method: :post) %>
+  <table style="width:80%">
+    <tr>
+      <th>County</th>
+      <th>Zip Code</th>
+      <th>Home Value</th>
+      <th>Date of Court Filing</th>
+      <th>Days until Judgement</th>
+    </tr>
+      <% @properties.each do |property| %>
+        <tr>
+          <td><%= property.prop_county %></td>
+          <td><%= property.prop_zip %></td>
+          <td><%= property.home_value %></td>
+          <td><%= property.record_date %></td>
+          <td><%= property.owner %></td>
+          <td><%= check_box_tag 'property.ids[]', property.id %> </td>    <!-- need to associate this with the record to move to purchase  -->
+        </tr>
+      <% end %>
+  </table>
+  <%= submit_tag "Purchase" %>
+  <!-- <button type='submit' form='purchase_form_table' value='Submit'>Submit</button> -->
+
+
+<!-- <input type="checkbox" value="#{current_user.id}"> -->
