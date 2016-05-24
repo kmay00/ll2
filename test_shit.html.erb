@@ -1,0 +1,212 @@
+<h1>Dashboard</h1>
+<h3>New Leads - Available for Purchase</h3>
+
+<!-- <ol>
+<% @properties.each do |property| %>
+  <li>
+  <%#= property.prop_county %>
+  </li>
+<% end %> -->
+
+
+<!--  THIS IS FOR DEVELOMENT PURPOSES ONLY - WILL ALL BE DELETED WHEN TESTING COMPLETED -->
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+</style>
+<!--  END OF FORMATTING DEVELOPMENT TESTING ; AND INCLUDING `style="width:80%"` below -->
+
+<!--  ############# me - WORKING - ##################################  -->
+
+<table style="width:80%">
+
+  <tr>
+    <th>County</th>
+    <th>Zip Code</th>
+    <th>Home Value</th>
+    <th>Date of Court Filing</th>
+    <th>Days until Judgement</th>
+  </tr>
+
+                                          <!--  also need an input checkbox here to select ALL records -->
+  <form>
+    <% @properties.each do |property| %>
+      <tr>
+        <td><%= property.prop_county %></td>
+        <td><%= property.prop_zip %></td>
+        <td><%= property.home_value %></td>
+        <td><%= property.record_date %></td>
+        <td><%= property.owner %></td>
+        <td><input type="checkbox"></td>    <!-- need to associate this with the record to move to purchase  -->
+      </tr>
+    <% end %>
+  </form>
+</table>
+
+<br>
+<input type="button" onclick="" value="Purchase">
+
+
+
+
+<!--  ############# me ##################################  -->
+
+<table style="width:80%">
+  <tr>
+    <th>County</th>
+    <th>Zip Code</th>
+    <th>Home Value</th>
+    <th>Date of Court Filing</th>
+    <th>Days until Judgement</th>
+    <th></th>
+  </tr>
+
+  <% form_for @properties.each do |property| %>
+    <tr>
+      <td><%= property.prop_county %></td>
+      <td><%= property.prop_zip %></td>
+      <td><%= property.home_value %></td>
+      <td><%= property.record_date %></td>
+      <td><%= property.owner %></td>
+      <td><input type="checkbox"></td>
+      <!-- <%#= property.submit %> -->
+    </tr>
+  <% end %>
+</table>
+
+
+<!--  ########### auston ####################################  -->
+
+
+<% form_for action="/" method="post" %>
+  <table style="width:80%">
+    <tr>
+      <th>County</th>
+      <th>Zip Code</th>
+      <th>Home Value</th>
+      <th>Date of Court Filing</th>
+      <th>Days until Judgement</th>
+    </tr>
+      <% @properties.each do |property| %>
+        <tr>
+          <td><%= property.prop_county %></td>
+          <td><%= property.prop_zip %></td>
+          <td><%= property.home_value %></td>
+          <td><%= property.record_date %></td>
+          <td><%= property.owner %></td>
+          <td><input type="checkbox" value="#{property.id}"></td>    <!-- need to associate this with the record to move to purchase  -->
+        </tr>
+      <% end %>
+  </table>
+  <input type="submit" value="Purchase" >
+<% end %>
+
+
+<!--  ############# izzy #1 ###################################  -->
+
+  <form>
+    <% @properties.each do |property| %>
+      <tr>
+        <td><%= property.prop_county %></td>
+        <td><%= property.prop_zip %></td>
+        <td><%= property.home_value %></td>
+        <td><%= property.record_date %></td>
+        <td><%= property.owner %></td>
+        <td><%=check_box_tag "checkbox" %></td>
+        <td class="property-id" style="display:flex;"><%= property.id%></td>
+<!-- need to associate this with the record to move to purchase  -->
+      </tr>
+    <% end %>
+  </form>
+</table>
+
+<span class="selected">THis is the span:</span>
+
+<script>
+  var grabChecked = function(){
+    $('input').click(function(){
+      // alert("alerting");
+      var id = $(this).parent().next().text();
+      // console.log(id+" stuff ");
+      $('.selected').append(id+",");
+    });
+  }
+  $(document).ready(function(){
+    grabChecked();
+  })
+</script>
+
+
+
+<!--
+added a last <td> that has the 'property.id' so we could grab that value with jquery
+then with js (jquery inside the <script>) every time user clicks on a checkbox it gets written inside the <span> once now all we're missing in a submit to grab that <span>'s text and take it to wherever you need it , some controller i imagine.  in the controller separate the string into an array (split(",")) and use those ids to grab the right properties
+
+from 'dashboard/index' s table the user submits the properties he/she is interested in and then you take that info and ... ??(fill in the line)
+-->
+
+
+<!--  ###############  izzy #2  #######################  -->
+
+<form>
+      <% @properties.each do |property| %>
+        <tr>
+          <td><%= property.prop_county %></td>
+          <td><%= property.prop_zip %></td>
+          <td><%= property.home_value %></td>
+          <td><%= property.record_date %></td>
+          <td><%= property.owner %></td>
+      <!-- IZZY SAYS:added the property.id as value to the checkbox so we can grab the value with jquery-->
+          <td><%=check_box_tag "checkbox","#{property.id}"%></td>
+                  <!-- need to associate this with the record to move to purchase  -->
+        </tr>
+      <% end %>
+    </form>
+  </table>
+
+  <script>
+  // IZZY SAYS: initialize an empty array
+    var selected_array = []
+  // IZZY SAYS: function that grabs the element that is being checked/unchecked by the user
+    var grabChecked = function(){
+  // IZZY SAYS:then we 'jquery-traverse' to the element's parent's next element that contains the
+      $('input').click(function(){
+  // IZZY SAYS: grab the value a.k.a property.id
+        var id = $(this).val();
+  //IZZY SAYS: this is just to double check in the console
+        console.log(id);
+  //IZZY SAYS: if the element already exists in the array it removes it
+        if (selected_array.includes(id)===true){
+          selected_array.splice(selected_array.indexOf(id),1);
+  //IZZY SAYS: if the element is selected it's id gets added to the array
+        } else {
+          selected_array.push(id);
+        }
+        console.log(selected_array);
+      });
+    }
+
+    $(document).ready(function(){
+      grabChecked();
+    })
+  </script>
+
+  <!--  ###########################################################  -->
+
+  <div class="">
+    <input type="button" onclick="" value="Show My Purchases">
+    <!-- <%# controller.dashboard %> -->
+  </div>
+
+<!--
+FROM PROPERTIES CONTROLLER
+  # self.getaddress
+  # in the rake task
+  # Property.use_cabybara
+  # Property.get_CSV
+  # Property.getaddress  -->

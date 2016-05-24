@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'dashboard/index'
   get 'dashboard/show'
+  post 'dashboard/create'
 
   # sessions routes
   resources :sessions, only: [:new, :create, :destroy]

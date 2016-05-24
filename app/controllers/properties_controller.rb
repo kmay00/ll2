@@ -7,6 +7,12 @@ class PropertiesController < ApplicationController
     @properties = Property.all
   end
 
+# self.getaddress
+# in the rake task
+# Property.use_cabybara
+# Property.get_CSV
+# Property.getaddress
+
   # GET /properties/1
   # GET /properties/1.json
   def show

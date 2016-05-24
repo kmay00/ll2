@@ -4,3 +4,5 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+#the rakefile will run the backdoor login -- rake getaddress OR rake Property.getaddress
