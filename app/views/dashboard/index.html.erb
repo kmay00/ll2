@@ -1,12 +1,7 @@
+
 <h1>Dashboard</h1>
 <h3>New Leads - Available for Purchase</h3>
 
-<!-- <ol>
-<% @properties.each do |property| %>
-  <li>
-  <%#= property.prop_county %>
-  </li>
-<% end %> -->
 
 
 <!--  THIS IS FOR DEVELOMENT PURPOSES ONLY - WILL ALL BE DELETED WHEN TESTING COMPLETED -->
@@ -19,37 +14,30 @@ th, td {
     padding: 5px;
 }
 </style>
-<!--  END OF FORMATTING DEVELOPMENT TESTING ; AND INCLUDING `style="width:80%"` below -->
+
+<!-- form_tag('name of method', symbolkey: :action) -->
+<%= form_tag('purchase', method: :post) %>
+  <table style="width:80%">
+    <tr>
+      <th>County</th>
+      <th>Zip Code</th>
+      <th>Home Value</th>
+      <th>Date of Court Filing</th>
+      <th>Days until Judgement</th>
+    </tr>
+      <% @properties.each do |property| %>
+        <tr>
+          <td><%= property.prop_county %></td>
+          <td><%= property.prop_zip %></td>
+          <td><%= property.home_value %></td>
+          <td><%= property.record_date %></td>
+          <td><%= property.owner %></td>
+          <td><%= check_box_tag 'property.ids[]', property.id %> </td>    <!-- need to associate this with the record to move to purchase  -->
+        </tr>
+      <% end %>
+  </table>
+  <%= submit_tag "Purchase" %>
+  <!-- <button type='submit' form='purchase_form_table' value='Submit'>Submit</button> -->
 
 
-<table style="width:80%">
-
-  <tr>
-    <th>County</th>
-    <th>Zip Code</th>
-    <th>Home Value</th>
-    <th>Date of Court Filing</th>
-    <th>Days until Judgement</th>
-  </tr>
-
-                                          <!--  also need an input checkbox here to select ALL records -->
-  <form>
-    <% @properties.each do |property| %>
-      <tr>
-        <td><%= property.prop_county %></td>
-        <td><%= property.prop_zip %></td>
-        <td><%= property.home_value %></td>
-        <td><%= property.record_date %></td>
-        <td><%= property.owner %></td>
-        <td><input type="checkbox"></td>    <!-- need to associate this with the record to move to purchase  -->
-      </tr>
-    <% end %>
-  </form>
-</table>
-
-<br>
-<input type="button" onclick="" value="Purchase">
-
-<div class="">
-  
-</div>
+<!-- <input type="checkbox" value="#{current_user.id}"> -->

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'dashboard/index'
   get 'dashboard/show'
 
+  post 'dashboard/purchase' => 'dashboard#purchase'
+
   # sessions routes
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   # scaffolded model resource routes
+  resources :dashboard
   resources :partials
   resources :properties
   resources :users
