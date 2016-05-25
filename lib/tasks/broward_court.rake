@@ -1,7 +1,7 @@
 namespace :broward_court do
   desc "TODO"
   task get_lis_pendens: :environment do
-  # $ rake broward_court:get_lis_pendens  
+  # $ rake broward_court:get_lis_pendens
 
   def use_cabybara
     #get leads from Civil Court
@@ -69,20 +69,16 @@ namespace :broward_court do
   ## MAY NOT NEED THIS LINE -- MAY NEED IT?
   # extract_CSV_data(data)
 
-
   data.each do |property|
     document_num = property[0]
     owner = property[1]
-
-    # record_date = property[7]
-    # record_date = record_date.to_datetime     #.strftime('%Q')
-    # p record_date
-    # p record_date.class
-
+    record_date = property[7]
+    record_date = DateTime.strptime(record_date, "%m/%d/%Y %k:%M:%S")
     doc_number_lp = property[10]
 
     Partial.create(document_num: document_num,
                     owner: owner,
+                    record_date: record_date,
                     doc_number_lp: doc_number_lp)
   end
 

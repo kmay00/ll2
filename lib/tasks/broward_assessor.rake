@@ -1,7 +1,7 @@
 namespace :broward_assessor do
   desc "TODO"
   task get_address: :environment do
-  # $ rake broward_assessor:get_address  
+  # $ rake broward_assessor:get_address
 
     def use_cabybara
       #get leads from Civil Court
@@ -21,9 +21,7 @@ namespace :broward_assessor do
       Capybara.default_driver = :poltergeist
     end
 
-
     use_cabybara
-
 
     Partial.all.each do |item|
       name = item.owner
