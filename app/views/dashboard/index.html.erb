@@ -1,6 +1,6 @@
 
 <h1>Dashboard</h1>
-<h3>New Leads - Available for Purchase</h3>
+<h3>New Leads (available within last 24 hours)- Available for Purchase</h3>
 
 
 
@@ -32,7 +32,7 @@ th, td {
           <td><%= property.home_value %></td>
           <td><%= property.record_date %></td>
           <td><%= property.owner %></td>
-          <td><%= check_box_tag 'property.ids[]', property.id %> </td>    <!-- need to associate this with the record to move to purchase  -->
+          <td><%= check_box_tag 'property.ids[]', property.id %> </td>
         </tr>
       <% end %>
   </table>
