@@ -44,7 +44,7 @@ namespace :fix_address do
         legal_desc = browser.all(:xpath, '/html/body/table[2]/tbody/tr/td/table/tbody/tr[1]/td[1]/table[3]/tbody/tr/td[2]/span')[0].text
         prop_acct_num = browser.all(:xpath, '/html/body/table[2]/tbody/tr/td/table/tbody/tr[1]/td[1]/table[1]/tbody/tr/td[3]/table/tbody/tr[1]/td[2]/span')[0].text
         home_value = browser.all(:xpath, '/html/body/table[2]/tbody/tr/td/table/tbody/tr[1]/td[1]/table[5]/tbody/tr[3]/td[4]/span')[0].text
-
+                                          # /html/body/table[2]/tbody/tr/td/table/tbody/tr[1]/td[1]/table[5]/tbody/tr[3]/td[4]/span
         #go to GeoCodes and get Property Address
         search_addr = prop_addr.gsub(" ","+").gsub("-","+")
         api_key = 'AIzaSyDa1BWxkgm1n3tljbV-J_6bo3r7jV1UsD4'
@@ -58,8 +58,8 @@ namespace :fix_address do
 
         prop_str_addr = address_components.split(",")[0].strip
         prop_city = address_components(",")[1].strip
-        prop_state = address_components.split(",")[2](" ")[0].strip
-        prop_zip = address_components.split(",")[2](" ")[1].strip
+        prop_state = address_components.split(",")[2].split(" ")[0].strip
+        prop_zip = address_components.split(",")[2].split(" ")[1].strip
         # Use GoogleGeoCodes PlaceID finder to find additional info such as County
         # prop_county = "#{address_components[4]["long_name"]}"
 
@@ -77,8 +77,8 @@ namespace :fix_address do
 
         mail_str_addr = address_components.split(",")[0].strip
         mail_city = address_components(",")[1].strip
-        mail_state = address_components.split(",")[2](" ")[0].strip
-        mail_zip = address_components.split(",")[2](" ")[1].strip
+        mail_state = address_components.split(",")[2].split(" ")[0].strip
+        mail_zip = address_components.split(",")[2].split(" ")[1].strip
         # Use GoogleGeoCodes PlaceID finder to find additional info such as County
         # mail_county = "#{address_components[4]["long_name"]}"
 
