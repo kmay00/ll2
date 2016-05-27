@@ -7,24 +7,44 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="user_header">
-    <% if current_user %>
-      Logged in as <%= current_user.email %>.
-      <%= link_to "Log Out", logout_path %>
-    <% else %>
-      <%= link_to "Sign Up", signup_path %> or
-      <%= link_to "Log In", login_path %>
-    <% end %>
-  </div>
+  <nav id="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item left-item">
+            <a class="navbar-link" href="/">LawLeads</a></li>
+          <li class="navbar-item">
+            <a class="navbar-link" href="#" data-popover="#codeNavPopover">Sample Link</a></li>
 
+          <% if current_user %>
+          <li class="navbar-item right-item">
+            <%= link_to "Log Out", logout_path, class: "navbar-link" %>
+          </li>
+          <li class="navbar-item right-item">
+            <span class="navbar-link">Welcome <%= current_user.user_name %></span>
+          </li>
+          <% else %>
+            <li class="navbar-item right-item">
+              <%= link_to "Sign Up", signup_path, class: "navbar-link" %>
+            </li>
+            <li class="navbar-item right-item">
+              <%= link_to "Log In", login_path, class: "navbar-link" %>
+            </li>
+          <% end %>
+        </ul>
+  </div>
+</nav>
   <% flash.each do |key, value| %>
     <%= content_tag(:div, class: "alert alert-#{key}") do %>
       <p><%= value %></p>
     <% end %>
   <% end %>
+<div id="spacer" class="container">
+</div>
+
 <div class="container">
 <%= yield %>
 </div>
+
 
 </body>
 </html>
