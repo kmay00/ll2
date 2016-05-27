@@ -1,5 +1,18 @@
-.navbar {
+#spacer {
+  z-index: 0;
+  height: 6.5rem;
+}
+
+.fixed {
   position: fixed;
+}
+
+#navbar {
+  position: fixed;
+/*  margin-top: 6.5rem;*/
+ /* text-align: center;*/
+  background-color: #33C3F0;
+  z-index: 99;
   top: 0;
   left: 0;
   display: block;
@@ -8,9 +21,37 @@
   border-bottom: 1px solid #eee;
 }
 
-.value-image {
-  height: 40%;
-  width: 40%;
+.navbar-item {
+  display: inline;
+  line-height: 4.5em;
+}
+
+.navbar-link {
+  color: #FFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+
+.right-item {
+  float: right;
+}
+
+
+
+a.navbar-link:visited {
+  color: #FFF;
+}
+
+a.navbar-link:hover {
+  color: black;
+  background-color: #33C3F0;
+}
+
+.value-img {
+  height: 35%;
+  width: 35%;
 }
 /*
 * Skeleton V2.0.4
@@ -45,7 +86,7 @@
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box; }
