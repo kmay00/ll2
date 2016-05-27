@@ -24,9 +24,14 @@ namespace :fix_address do
 
       use_cabybara
 
+      # counters
+      count = 1
+      lead = 0
+
       Partial.all.each do |item|
         name = item.owner
         document_num = item.document_num
+        record_date = item.record_date
         doc_number_lp = item.doc_number_lp
 
         browser = Capybara.current_session
@@ -36,8 +41,18 @@ namespace :fix_address do
         browser.find('#Text1').set(name)
         browser.find("a[href='javascript:MM_Edit();']").click
 
+      if browser.current_url === 'http://www.bcpa.net/RecSearch.asp'
         # IF broswer.page = 'http://www.bcpa.net/RecSearch.asp' THEN skip to next record
+        #
+        # go back to url = 'http://www.bcpa.net/RecName.asp' and process the next record
+        browser = Capybara.current_session
+        url = 'http://www.bcpa.net/RecName.asp'
+        browser.visit url
 
+        # counter
+        puts "#{count} -- multiple addresses"
+        count +=1
+      else
         prop_addr = browser.all(:xpath, '/html/body/table[2]/tbody/tr/td/table/tbody/tr[1]/td[1]/table[1]/tbody/tr/td[1]/table/tbody/tr[1]/td[2]/span')[0].text
         owner = browser.all(:xpath, '/html/body/table[2]/tbody/tr/td/table/tbody/tr[1]/td[1]/table[1]/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/span')[0].text
         mail_addr = browser.all(:xpath, '/html/body/table[2]/tbody/tr/td/table/tbody/tr[1]/td[1]/table[1]/tbody/tr/td[1]/table/tbody/tr[3]/td[2]/span')[0].text
@@ -57,9 +72,10 @@ namespace :fix_address do
         address_components = parsed['results'][0]['formatted_address']
 
         prop_str_addr = address_components.split(",")[0].strip
-        prop_city = address_components(",")[1].strip
+        prop_city = address_components.split(",")[1].strip
         prop_state = address_components.split(",")[2].split(" ")[0].strip
         prop_zip = address_components.split(",")[2].split(" ")[1].strip
+        home_value = home_value.gsub("$", "").gsub(",", "").to_i
         # Use GoogleGeoCodes PlaceID finder to find additional info such as County
         # prop_county = "#{address_components[4]["long_name"]}"
 
@@ -76,11 +92,15 @@ namespace :fix_address do
         address_components = parsed['results'][0]['formatted_address']
 
         mail_str_addr = address_components.split(",")[0].strip
-        mail_city = address_components(",")[1].strip
+        mail_city = address_components.split(",")[1].strip
         mail_state = address_components.split(",")[2].split(" ")[0].strip
         mail_zip = address_components.split(",")[2].split(" ")[1].strip
         # Use GoogleGeoCodes PlaceID finder to find additional info such as County
         # mail_county = "#{address_components[4]["long_name"]}"
+
+        # counter
+        p count
+        count +=1
 
         Property.create(owner: name,
                         prop_str_addr: prop_str_addr,
@@ -97,9 +117,14 @@ namespace :fix_address do
                         legal_desc: legal_desc,
                         document_num: document_num,
                         prop_acct_num: prop_acct_num,
+                        record_date: record_date,
                         doc_number_lp: doc_number_lp
                       )
-      end
 
+        # WOULD BE A BETTER TO FIRST MOVE TO A DELETE TABLE SO KNOW WHAT RECORDS ARE BEING ELIMINATED (so can assess)
+        # Partial.destroy  (of the current record on successful conversion to Property)
+      end
+      end
+    puts "************   #{lead} of #{count} records processed."
   end
 end

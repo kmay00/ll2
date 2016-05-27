@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'dashboard/index'
   get 'dashboard/show'
+  get 'dashboard/avail_to_buy'
   post 'dashboard/create'
 
   post 'dashboard/purchase' => 'dashboard#purchase'

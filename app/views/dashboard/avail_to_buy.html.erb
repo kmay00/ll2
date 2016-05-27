@@ -1,0 +1,34 @@
+<h1>Leads available for Purchase</h1>
+
+<!-- form_tag('name of method', symbolkey: :action) -->
+<%= form_tag('purchase', method: :post) do %>
+  <table style="width:80%">
+    <tr>
+      <th>County</th>
+      <th>Zip Code</th>
+      <th>Home Value</th>
+      <th>Days until Judgement</th>
+      <th>Purchase</th>
+    </tr>
+    <!-- display all Proerties not purchased by Attorney -->
+    <% @properties.each do |property| %>
+        <tr>
+          <td><%= property.prop_county %></td>
+          <td><%= property.prop_zip %></td>
+          <td><%= property.home_value %></td>
+          <td><%= property.record_date %></td>
+          <td><%= check_box_tag 'property.ids[]', property.id %> </td>
+        </tr>
+    <% end %>
+  </table>
+  <%= submit_tag "Purchase" %>
+<% end %>
+<!-- <button type='submit' form='purchase_form_table' value='Submit'>Submit</button> -->
+
+<%= form_tag(dashboard_avail_to_buy_path, :method => "get", id: "search-form") do %>
+  <!--  passing in the lower bound for home value search -->
+  <%= text_field_tag :keyword1, params[:keyword1], placeholder: "from: Price" %>
+  <!--  passing in the upper bound for home value search -->
+  <%= text_field_tag :keyword2, params[:keyword2], placeholder: "to: Price" %>
+  <%= submit_tag "Search" %>
+<% end %>
