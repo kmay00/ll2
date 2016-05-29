@@ -43,6 +43,10 @@
 <%= yield %>
 </div>
 
+<% if Rails.env.development? %>
+      <%= console %>
+      <%= debug(params) %>
+<% end %>
 
 </body>
 </html>

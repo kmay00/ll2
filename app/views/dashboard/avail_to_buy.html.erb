@@ -10,7 +10,7 @@
     <tr>
       <th>Zip Code</th>
       <th>Home Value</th>
-      <th>Date of Court Filing</th>      
+      <th>Date of Court Filing</th>
       <th><em>estimated</em> Date of Judgement</th>
       <th>Purchase</th>
     </tr>
@@ -30,10 +30,18 @@
 <% end %>
 <!-- <button type='submit' form='purchase_form_table' value='Submit'>Submit</button> -->
 
+<!-- <%#= form_tag(dashboard_avail_to_buy_path, :method => "get", id: "search-form") do %> -->
+  <!--  passing in the lower bound for home value search -->
+  <!-- <%#= text_field_tag :keyword1, params[:keyword1], placeholder: "from: Price" %> -->
+  <!--  passing in the upper bound for home value search -->
+  <!-- <%#= text_field_tag :keyword2, params[:keyword2], placeholder: "to: Price" %> -->
+  <!-- <%#= submit_tag "Search" %> -->
+<!-- <%# end %> -->
+
 <%= form_tag(dashboard_avail_to_buy_path, :method => "get", id: "search-form") do %>
   <!--  passing in the lower bound for home value search -->
-  <%= text_field_tag :keyword1, params[:keyword1], placeholder: "from: Price" %>
+  <%= select_tag :keyword1, options_for_select([["100k",100000],["150k",150000],["250k",250000],["500k",500000]]) %>
   <!--  passing in the upper bound for home value search -->
-  <%= text_field_tag :keyword2, params[:keyword2], placeholder: "to: Price" %>
+  <%= select_tag :keyword2, options_for_select([["150k",150000],["250k",250000],["500k",500000],["5m",5000000]]) %>
   <%= submit_tag "Search" %>
 <% end %>
