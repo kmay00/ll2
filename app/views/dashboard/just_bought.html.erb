@@ -1,4 +1,9 @@
-<h1>Leads selected for Purchase</h1>
+<div class="navbuttons twelve.columns">
+<%= button_to "Checkout", { :action => "stripe" }, :method => :get %>
+<%= button_to "Available Leads", { :action => "avail_to_buy" }, :method => :get %>
+</div>
+
+<h2>Leads selected for Purchase</h2>
 
 <table style="width:80%">
   <tr>
@@ -15,7 +20,7 @@
       <!-- get Property info utilizing the property_id which is stored in var = bought for each iteration -->
       <% bought = purchase.property_id %>
       <td><%= Property.find_by(id: bought).prop_zip %></td>
-      <td><%= Property.find_by(id: bought).home_value %></td>
+      <td><%= number_to_currency(Property.find_by(id: bought).home_value, precision: 0) %></td>
       <td><%= Property.find_by(id: bought).record_date.strftime("%b %d, %Y") %></td>      
       <% served = Property.find_by(id: bought).record_date %>
       <td><%= 20.business_days.from_now(served).strftime("%b %d, %Y") %></td>

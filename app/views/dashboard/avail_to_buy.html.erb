@@ -1,4 +1,8 @@
-<h1>Leads available for Purchase</h1>
+<div class="navbuttons twelve.columns">
+<%= button_to "Checkout", { :action => "stripe" }, :method => :get %>
+</div>
+
+<h2>Leads available for Purchase</h2>
 
 <!-- form_tag('name of method', symbolkey: :action) -->
 <%= form_tag('purchase', method: :post) do %>
@@ -14,7 +18,7 @@
     <% @properties.each do |property| %>
         <tr>
           <td><%= property.prop_zip %></td>
-          <td><%= property.home_value %></td>
+          <td><%= number_to_currency(property.home_value, precision: 0) %></td>
           <td><%= property.record_date.strftime("%b %d, %Y") %></td>
           <% served = property.record_date %>
           <td><%= 20.business_days.from_now(served).strftime("%b %d, %Y") %></td>
@@ -22,7 +26,7 @@
         </tr>
     <% end %>
   </table>
-  <%= submit_tag "Purchase" %>
+  <%= submit_tag "Purchase", class: 'button-primary', id:"purchase-button"  %>
 <% end %>
 <!-- <button type='submit' form='purchase_form_table' value='Submit'>Submit</button> -->
 

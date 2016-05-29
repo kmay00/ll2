@@ -1,6 +1,7 @@
-<div class="fixed">
-<h1>Dashboard</h1>
-<h3>New Leads - Available for Purchase</h3>
+<div class="navbuttons twelve.columns">
+<%= button_to "Purchase History", { :action => "show" }, :method => :get %>
+</div>
+<h2>New Daily Leads - Filed in last 24hrs</h2>
 
 <!--  THIS IS FOR DEVELOMENT PURPOSES ONLY - WILL ALL BE DELETED WHEN TESTING COMPLETED -->
 
@@ -23,7 +24,7 @@
        <% @properties.each do |property| %>
         <tr>
           <td><%= property.prop_zip %></td>
-          <td><%= property.home_value %></td>
+          <td><%= number_to_currency(property.home_value, precision: 0) %></td>
           <td><%= property.record_date.strftime("%b %d, %Y") %></td>
           <% served = property.record_date %>
           <td><%= 20.business_days.from_now(served).strftime("%b %d, %Y") %></td>
@@ -33,7 +34,7 @@
       </tbody>
       <% end %>
   </table>
-  <%= submit_tag "Purchase", class: 'button-primary' %>
+  <%= submit_tag "Purchase", class: 'button-primary', id:"purchase-button" %>
   <!-- <button type='submit' form='purchase_form_table' value='Submit'>Submit</button> -->
 
 

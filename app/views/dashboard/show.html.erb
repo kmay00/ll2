@@ -1,4 +1,7 @@
-<h1>History of purchased leads</h1>
+<div class="navbuttons twelve.columns">
+<%= button_to "Available Leads", { :action => "avail_to_buy" }, :method => :get %>
+</div>
+<h2>History of purchased leads</h2>
 
 <table style="width:80%">
   <tr>
@@ -19,7 +22,7 @@
       <td><%= Property.find_by(id: bought).owner %></td>
       <td><%= Property.find_by(id: bought).prop_str_addr %></td>
       <td><%= Property.find_by(id: bought).mail_str_addr %></td>
-      <td><%= Property.find_by(id: bought).home_value %></td>
+      <td><%= number_to_currency(Property.find_by(id: bought).home_value, precision: 0) %></td>
       <% served = Property.find_by(id: bought).record_date %>
       <td><%= 20.business_days.from_now(served).strftime("%b %d, %Y") %></td>
       <td><%= purchase.created_at.strftime("%b %d, %Y") %></td>

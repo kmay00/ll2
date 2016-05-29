@@ -3,9 +3,27 @@
   height: 6.5rem;
 }
 
-/*.fixed {
-  position: fixed;
+.title {
+  padding: 2em 0 1em 0;
+  text-align: center;
+}
+
+.start-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 3em 0;
+}
+
+.value-prop {
+  display: flex;
+  justify-content: center;
+}
+
+/*#start-button {
+  margin: 0 0 1em 0;
 }*/
+
+
 
 #navbar {
   position: fixed;
@@ -20,6 +38,9 @@
   width: 100%;
   border-bottom: 1px solid #eee;
 }
+#purchase-button {
+  float: right;
+}
 
 .navbar-item {
   display: inline;
@@ -31,13 +52,18 @@
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;
+  padding: 1em;
 }
 
+.navbuttons {
+  padding: 2em 0;
+  display: flex;
+  flex-direction: row;
+}
 
 .right-item {
   float: right;
 }
-
 
 
 a.navbar-link:visited {

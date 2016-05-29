@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'dashboard/just_bought'
   get 'dashboard/show'
   get 'dashboard/avail_to_buy'
+  get 'dashboard/stripe'
   post 'dashboard/create'
 
   post 'dashboard/purchase' => 'dashboard#purchase'
