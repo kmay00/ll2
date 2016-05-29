@@ -2,9 +2,9 @@ class Purchase < ActiveRecord::Base
   belongs_to :user
   belongs_to :property
 
-  def self.to_csv
+  def self.to_csv(options = {})     # add xls option by adding (options = {})
     column_names = []
-    CSV.generate do |csv|
+    CSV.generate(options) do |csv|  # add xls option by adding (options)
       column_names << 'owner' << 'prop str addr' << 'prop city' << 'prop state' << 'prop zip' << 'home value' << 'record date'
       csv << column_names
       # csv.add_row column_names
@@ -16,7 +16,7 @@ class Purchase < ActiveRecord::Base
         row << item.property.prop_state
         row << item.property.prop_zip
         row << item.property.home_value
-        row << item.property.record_date      
+        row << item.property.record_date
         csv << row
         # p item.property.owner
       end

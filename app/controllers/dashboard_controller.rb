@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @purchases.to_csv }
-      # format.xls { render text: @purchases.to_xls }
+      format.xls { send_data @purchases.to_csv(col_sep: "\t") }
     end
   end
 
