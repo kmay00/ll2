@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 20160528144118) do
   create_table "purchases", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "property_id"
-    t.datetime "created_at"     null: false
-    t.datetime "updated_at"     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

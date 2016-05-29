@@ -11,25 +11,24 @@
   <table class="u-full-width">
     <thead>
       <tr>
-      <th>County</th>
       <th>Zip Code</th>
       <th>Home Value</th>
       <th>Date of Court Filing</th>
-      <th>Days until Judgement</th>
+      <th><em>estimated</em> Date of Judgement</th>
       </tr>
     </thead>
     </div>
     <tbody>
-       
+
        <% @properties.each do |property| %>
         <tr>
-          <td><%= property.prop_county %></td>
           <td><%= property.prop_zip %></td>
           <td><%= property.home_value %></td>
-          <td><%= property.record_date %></td>
-          <td><%= property.owner %></td>
+          <td><%= property.record_date.strftime("%b %d, %Y") %></td>
+          <% served = property.record_date %>
+          <td><%= 20.business_days.from_now(served).strftime("%b %d, %Y") %></td>
           <!-- check_box_tag 'name of tag', value -->
-          <td><%= check_box_tag 'property.ids[]', property.id %></td>   
+          <td><%= check_box_tag 'property.ids[]', property.id %></td>
         </tr>
       </tbody>
       <% end %>

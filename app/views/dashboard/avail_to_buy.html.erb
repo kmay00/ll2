@@ -4,19 +4,20 @@
 <%= form_tag('purchase', method: :post) do %>
   <table style="width:80%">
     <tr>
-      <th>County</th>
       <th>Zip Code</th>
       <th>Home Value</th>
-      <th>Days until Judgement</th>
+      <th>Date of Court Filing</th>      
+      <th><em>estimated</em> Date of Judgement</th>
       <th>Purchase</th>
     </tr>
     <!-- display all Proerties not purchased by Attorney -->
     <% @properties.each do |property| %>
         <tr>
-          <td><%= property.prop_county %></td>
           <td><%= property.prop_zip %></td>
           <td><%= property.home_value %></td>
-          <td><%= property.record_date %></td>
+          <td><%= property.record_date.strftime("%b %d, %Y") %></td>
+          <% served = property.record_date %>
+          <td><%= 20.business_days.from_now(served).strftime("%b %d, %Y") %></td>
           <td><%= check_box_tag 'property.ids[]', property.id %> </td>
         </tr>
     <% end %>

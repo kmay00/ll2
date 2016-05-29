@@ -42,6 +42,9 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    business_time (0.7.5)
+      activesupport (>= 3.1.0)
+      tzinfo
     byebug (9.0.4)
     capybara (2.7.1)
       addressable
@@ -169,6 +172,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  business_time
   byebug
   capybara
   coffee-rails (~> 4.1.0)

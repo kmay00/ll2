@@ -13,6 +13,11 @@ class DashboardController < ApplicationController
     @purchases = Purchase.all
   end
 
+  def just_bought
+    @properties = Property.all
+    @purchases = Purchase.all
+  end
+
 
   def avail_to_buy
     # LOGIC to only display Properties not yet purchased

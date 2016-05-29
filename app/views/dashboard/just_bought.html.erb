@@ -1,13 +1,11 @@
-<h1>History of purchased leads</h1>
+<h1>Leads selected for Purchase</h1>
 
 <table style="width:80%">
   <tr>
-    <th>Name</th>
-    <th>Property Address</th>
-    <th>Mailing Address</th>
+    <th>Zip Code</th>
     <th>Home Value</th>
+    <th>Date of Filing</th>
     <th><em>estimated</em> Date of Judgement</th>
-    <th>Date Lead Purchsed</th>
   </tr>
   <!-- set var = attorney to current session user -->
   <% attorney = session[:user_id] %>
@@ -16,17 +14,11 @@
     <tr>
       <!-- get Property info utilizing the property_id which is stored in var = bought for each iteration -->
       <% bought = purchase.property_id %>
-      <td><%= Property.find_by(id: bought).owner %></td>
-      <td><%= Property.find_by(id: bought).prop_str_addr %></td>
-      <td><%= Property.find_by(id: bought).mail_str_addr %></td>
+      <td><%= Property.find_by(id: bought).prop_zip %></td>
       <td><%= Property.find_by(id: bought).home_value %></td>
+      <td><%= Property.find_by(id: bought).record_date.strftime("%b %d, %Y") %></td>      
       <% served = Property.find_by(id: bought).record_date %>
       <td><%= 20.business_days.from_now(served).strftime("%b %d, %Y") %></td>
-      <td><%= purchase.created_at.strftime("%b %d, %Y") %></td>
     </tr>
   <% end %>
 </table>
-
-<button type="button" onclick="alert('download to CSV')">CSV</button>
-<button type="button" onclick="alert('download to Excel')">Excel</button>
-<button type="button" onclick="alert('download to PDF')">PDF</button>
