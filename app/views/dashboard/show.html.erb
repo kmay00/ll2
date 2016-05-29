@@ -27,6 +27,8 @@
   <% end %>
 </table>
 
-<button type="button" onclick="alert('download to CSV')">CSV</button>
-<button type="button" onclick="alert('download to Excel')">Excel</button>
-<button type="button" onclick="alert('download to PDF')">PDF</button>
+<p>
+  Download:
+  <%= link_to "CSV", dashboard_show_path(format: "csv") %>
+  <!-- <%#= link_to "Excel", dashboad_path(format: "xls") %> -->
+</p>

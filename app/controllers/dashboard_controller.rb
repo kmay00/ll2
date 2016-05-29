@@ -11,6 +11,12 @@ class DashboardController < ApplicationController
   def show
     @properties = Property.all
     @purchases = Purchase.all
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: @purchases.to_csv }
+      # format.xls { render text: @purchases.to_xls }
+    end
   end
 
   def just_bought
