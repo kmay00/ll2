@@ -10,11 +10,12 @@ class DashboardController < ApplicationController
 
   def show
     @properties = Property.all
-    @purchases = Purchase.all
-
+    # setting purchase to all purchases by currently logged in user
+    @purchases = Purchase.where(user_id: session[:user_id])
+    # @bought = []
     respond_to do |format|
       format.html
-      format.csv { render text: @purchases.to_csv }
+      format.csv { send_data @purchases.to_csv }
       # format.xls { render text: @purchases.to_xls }
     end
   end
