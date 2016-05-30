@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @purchases.to_csv }
-      format.xls { send_data @purchases.to_csv(col_sep: "\t") }
+      # format.xls { send_data @purchases.to_csv(col_sep: "\t") }
     end
   end
 
@@ -25,6 +25,16 @@ class DashboardController < ApplicationController
     @purchases = Purchase.all
   end
 
+  def stripe
+    @purchases = Purchase.where(user_id: session[:user_id], paid: false)
+
+    # puts all user purchases into an array
+    # @user_purchases = User.where(user_id: session[:user_id])
+
+    # then need to change 'paid' by accessing through user_purchases
+    # and iterate through using @user_purchases
+    # user_purchases.find_by(property_id)
+  end
 
   def avail_to_buy
     # LOGIC to only display Properties not yet purchased

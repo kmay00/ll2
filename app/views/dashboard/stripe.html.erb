@@ -1,1 +1,27 @@
-<h1>Stripe Checkout</h1>
+<h1>Stripe Checkout - confirm purchase</h1>
+
+<table style="width:80%">
+  <tr>
+    <th>Zip Code</th>
+    <th>Home Value</th>
+    <th>Date of Filing</th>
+    <th><em>estimated</em> Date of Judgement</th>
+  </tr>
+
+  <!-- find all instances in Purchase where attorney bought the lead ; then iterate through -->
+  <% @purchases.each do |purchase| %>
+    <tr>
+      <td><%= Property.find_by_id(purchase.property_id).prop_zip %></td>
+      <td><%= number_to_currency(Property.find_by_id(purchase.property_id).home_value, precision: 0) %></td>
+      <td><%= Property.find_by_id(purchase.property_id).record_date.strftime("%b %d, %Y") %></td>
+      <% served = Property.find_by_id(purchase.property_id).record_date %>
+      <td><%= 20.business_days.from_now(served).strftime("%b %d, %Y") %></td>
+    </tr>
+  <% end %>
+</table>
+
+<!--  after credit card is processed iterate again through @purchases and change 'paid' field -->
+<!-- <%# @purchases.each do |purchase| %>
+  <%#purchase.paid = true %>
+  <%# purchase.save %>
+<%# end %> -->

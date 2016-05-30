@@ -8,8 +8,6 @@ gem 'json'
 gem 'hirb'
 gem 'business_time'
 
-# gem 'rufus-scheduler', '~> 3.2'
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
