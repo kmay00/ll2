@@ -4,6 +4,7 @@
   <title>Lawleads2</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://use.fontawesome.com/2ede8b299c.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,7 +12,8 @@
       <div class="container">
         <ul class="navbar-list">
           <li class="navbar-item left-item">
-            <a class="navbar-link" href="/">LawLeads</a></li>
+            <a class="navbar-link" href="/"><i class="fa fa-balance-scale" aria-hidden="true"></i>
+LawLeads</a></li>
 
           <% if current_user %>
           <li class="navbar-item right-item">
