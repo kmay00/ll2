@@ -1,6 +1,8 @@
 <div class="navbuttons twelve.columns">
+<%= button_to "New Daily Leads", { :action => "index" }, :method => :get %>
+<%= button_to "All Available Leads", { :action => "avail_to_buy" }, :method => :get %>
+<%= button_to "Purchase History", { :action => "show" }, :method => :get %>
 <%= button_to "Checkout", { :action => "stripe" }, :method => :get %>
-<%= button_to "Available Leads", { :action => "avail_to_buy" }, :method => :get %>
 </div>
 
 <h2>Leads selected for Purchase</h2>

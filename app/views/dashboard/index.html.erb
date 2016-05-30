@@ -1,14 +1,21 @@
+<div class="fixed-header">
 <div class="navbuttons twelve.columns">
+<%= button_to "New Daily Leads", { :action => "index" }, :method => :get %>
+<%= button_to "All Available Leads", { :action => "avail_to_buy" }, :method => :get %>
 <%= button_to "Purchase History", { :action => "show" }, :method => :get %>
-</div>
-<h2>New Daily Leads - Filed in last 24hrs</h2>
+<%= button_to "Checkout", { :action => "stripe" }, :method => :get %>
 
+</div>
+  <h2>New Daily Leads - Filed in last 24hrs</h2>
+
+</div>
 <!--  THIS IS FOR DEVELOMENT PURPOSES ONLY - WILL ALL BE DELETED WHEN TESTING COMPLETED -->
 
 <!-- form_tag('name of method', symbolkey: :action) -->
 
 <!-- form_tag('path', method) -->
-<%= form_tag('purchase', method: :post) %>
+<div id="scrolling">
+  <%= form_tag('purchase', method: :post) %>
   <table class="u-full-width">
     <thead>
       <tr>
@@ -18,7 +25,8 @@
       <th><em>estimated</em> Date of Judgement</th>
       </tr>
     </thead>
-    </div>
+      
+    
     <tbody>
 
        <% @properties.each do |property| %>
@@ -36,6 +44,5 @@
   </table>
   <%= submit_tag "Purchase", class: 'button-primary', id:"purchase-button" %>
   <!-- <button type='submit' form='purchase_form_table' value='Submit'>Submit</button> -->
-
-
+</div>
 <!-- <input type="checkbox" value="#{current_user.id}"> -->

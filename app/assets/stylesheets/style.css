@@ -44,7 +44,7 @@
 
 .navbar-item {
   display: inline;
-  line-height: 4.5em;
+  line-height: 5em;
 }
 
 .navbar-link {
@@ -55,8 +55,16 @@
   padding: 1em;
 }
 
+.navbar-link > .fa {
+  font-size: 1.5em;
+}
+
+ul > .fa {
+  color: #FFF;
+}
+
 .navbuttons {
-  padding: 2em 0;
+  padding: 2em 0 0 0;
   display: flex;
   flex-direction: row;
 }
@@ -79,6 +87,15 @@ a.navbar-link:hover {
   height: 35%;
   width: 35%;
 }
+/*
+.fixed-header {
+  position: fixed;
+}
+
+#scrolling {
+  position: relative;
+  top: 15%;
+}*/
 /*
 * Skeleton V2.0.4
 * Copyright 2014, Dave Gamache

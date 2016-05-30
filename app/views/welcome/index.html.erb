@@ -1,8 +1,13 @@
 <div>
   <section class="header">
-      <h2 class="title">Grow your practice with LawLeads!</h2>
+      <h2 class="title">Grow your practice with LawLeads! <i class="fa fa-balance-scale" aria-hidden="true"></i>
+</h2>
       <div class="start-container">
-      <a id="start-button" class="button button-primary" href="">Get Started</a>
+      <% if current_user != nil %>
+        <a id="start-button" class="button button-primary" href="dashboard/index">Get Started</a>
+      <% else %>
+        <a id="start-button" class="button button-primary" href="signup">Get Started</a>
+      <% end %>
       </div>
       <div class="value-props row">
         <div class="four columns value-prop">
