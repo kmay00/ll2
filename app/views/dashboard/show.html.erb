@@ -6,7 +6,7 @@
 </div>
 <h2>History of purchased leads</h2>
 
-<table style="width:80%">
+<table class="u-full-width">
   <tr>
     <th>Name</th>
     <th>Property Address</th>
@@ -15,6 +15,10 @@
     <th><em>estimated</em> Date of Judgement</th>
     <th>Date Lead Purchsed</th>
   </tr>
+  </table>
+  
+  <div class="tbl-content">
+  <table class="u-full-width">
   <!-- set var = attorney to current session user -->
   <% attorney = session[:user_id] %>
   <!-- find all instances in Purchase where attorney bought the lead ; then iterate through -->
@@ -32,6 +36,7 @@
     </tr>
   <% end %>
 </table>
+</div>
 
 <p>
   Download:

@@ -1,3 +1,5 @@
+
+
 <div class="fixed-header">
 <div class="navbuttons twelve.columns">
 <%= button_to "New Daily Leads", { :action => "index" }, :method => :get %>
@@ -14,7 +16,7 @@
 <!-- form_tag('name of method', symbolkey: :action) -->
 
 <!-- form_tag('path', method) -->
-<div id="scrolling">
+<div class="tbl-header">
   <%= form_tag('purchase', method: :post) %>
   <table class="u-full-width">
     <thead>
@@ -25,10 +27,12 @@
       <th><em>estimated</em> Date of Judgement</th>
       </tr>
     </thead>
-      
-    
+    </table>
+    </div>
+    <div>
+    <div class="tbl-content">
+    <table class="u-full-width">
     <tbody>
-
        <% @properties.each do |property| %>
         <tr>
           <td><%= property.prop_zip %></td>
@@ -42,7 +46,11 @@
       </tbody>
       <% end %>
   </table>
+  </div>
+
+
   <%= submit_tag "Purchase", class: 'button-primary', id:"purchase-button" %>
   <!-- <button type='submit' form='purchase_form_table' value='Submit'>Submit</button> -->
-</div>
+
 <!-- <input type="checkbox" value="#{current_user.id}"> -->
+</div>

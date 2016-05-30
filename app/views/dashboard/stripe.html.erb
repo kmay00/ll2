@@ -7,14 +7,18 @@
 
 <h2>Stripe Checkout - confirm purchase</h2>
 
-<table style="width:80%">
+<table class="u-full-width">
   <tr>
     <th>Zip Code</th>
     <th>Home Value</th>
     <th>Date of Filing</th>
     <th><em>estimated</em> Date of Judgement</th>
   </tr>
+  </table>
 
+
+  <div class="tbl-content">
+  <table class="u-full-width">
   <!-- find all instances in Purchase where attorney bought the lead ; then iterate through -->
   <% @purchases.each do |purchase| %>
     <tr>
@@ -26,6 +30,7 @@
     </tr>
   <% end %>
 </table>
+</div>
 
 <!--  after credit card is processed iterate again through @purchases and change 'paid' field -->
 <!-- <%# @purchases.each do |purchase| %>

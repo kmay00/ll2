@@ -9,7 +9,7 @@
 
 <!-- form_tag('name of method', symbolkey: :action) -->
 <%= form_tag('purchase', method: :post) do %>
-  <table style="width:80%">
+  <table class="u-full-width">
     <tr>
       <th>Zip Code</th>
       <th>Home Value</th>
@@ -17,6 +17,9 @@
       <th><em>estimated</em> Date of Judgement</th>
       <th>Purchase</th>
     </tr>
+    </table>
+    <div class="tbl-content">
+    <table class="u-full-width">
     <!-- display all Proerties not purchased by Attorney -->
     <% @properties.each do |property| %>
         <tr>
@@ -29,8 +32,10 @@
         </tr>
     <% end %>
   </table>
-  <%= submit_tag "Purchase", class: 'button-primary', id:"purchase-button"  %>
+  
 <% end %>
+</div>
+<%= submit_tag "Purchase", class: 'button-primary', id:"purchase-button"  %>
 <!-- <button type='submit' form='purchase_form_table' value='Submit'>Submit</button> -->
 
 <!-- <%#= form_tag(dashboard_avail_to_buy_path, :method => "get", id: "search-form") do %> -->
