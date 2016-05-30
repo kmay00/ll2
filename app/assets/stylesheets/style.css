@@ -44,7 +44,7 @@
 
 .navbar-item {
   display: inline;
-  line-height: 4.5em;
+  line-height: 5em;
 }
 
 .navbar-link {
@@ -55,8 +55,16 @@
   padding: 1em;
 }
 
+.navbar-link > .fa {
+  font-size: 1.5em;
+}
+
+ul > .fa {
+  color: #FFF;
+}
+
 .navbuttons {
-  padding: 2em 0;
+  padding: 2em 0 0 0;
   display: flex;
   flex-direction: row;
 }
@@ -79,6 +87,18 @@ a.navbar-link:hover {
   height: 35%;
   width: 35%;
 }
+
+.tbl-content {
+  height: auto;
+  max-height: 350px;
+  overflow-x: auto;
+}
+
+.scrolling {
+  position: fixed;
+}
+
+
 /*
 * Skeleton V2.0.4
 * Copyright 2014, Dave Gamache
@@ -213,7 +233,7 @@ body {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-weight: 300; }
 h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
 h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
@@ -435,7 +455,7 @@ p,
 ul,
 ol,
 form {
-  margin-bottom: 2.5rem; }
+  margin-bottom: 1.5rem; }
 
 
 /* Utilities

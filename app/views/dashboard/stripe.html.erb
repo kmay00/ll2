@@ -1,13 +1,24 @@
-<h1>Stripe Checkout - confirm purchase</h1>
+<div class="navbuttons twelve.columns">
+<%= button_to "New Daily Leads", { :action => "index" }, :method => :get %>
+<%= button_to "All Available Leads", { :action => "avail_to_buy" }, :method => :get %>
+<%= button_to "Purchase History", { :action => "show" }, :method => :get %>
+<%= button_to "Checkout", { :action => "stripe" }, :method => :get %>
+</div>
 
-<table style="width:80%">
+<h2>Stripe Checkout - confirm purchase</h2>
+
+<table class="u-full-width">
   <tr>
     <th>Zip Code</th>
     <th>Home Value</th>
     <th>Date of Filing</th>
     <th><em>estimated</em> Date of Judgement</th>
   </tr>
+  </table>
 
+
+  <div class="tbl-content">
+  <table class="u-full-width">
   <!-- find all instances in Purchase where attorney bought the lead ; then iterate through -->
   <% @purchases.each do |purchase| %>
     <tr>
@@ -19,6 +30,7 @@
     </tr>
   <% end %>
 </table>
+</div>
 
 <!--  after credit card is processed iterate again through @purchases and change 'paid' field -->
 <!-- <%# @purchases.each do |purchase| %>
