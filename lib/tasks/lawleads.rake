@@ -3,7 +3,7 @@ namespace :lawleads do
   task use_static_csv: :environment do
 # $ rake lawleads:use_static_csv
 
-  data = CSV.read('broward-complete.csv')
+  data = CSV.read('broward.csv')
   #get rid of the header info
   data.slice!(0)
 
