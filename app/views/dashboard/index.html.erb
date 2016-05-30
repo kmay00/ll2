@@ -27,11 +27,11 @@
       <th><em>estimated</em> Date of Judgement</th>
       </tr>
     </thead>
-    </table>
-    </div>
-    <div>
-    <div class="tbl-content">
-    <table class="u-full-width">
+  </table>
+</div>
+
+<div class="tbl-content">
+  <table class="u-full-width">
     <tbody>
        <% @properties.each do |property| %>
         <tr>
@@ -46,7 +46,7 @@
       </tbody>
       <% end %>
   </table>
-  </div>
+</div>
 
 
   <%= submit_tag "Purchase", class: 'button-primary', id:"purchase-button" %>
